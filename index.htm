@@ -1,0 +1,191 @@
+<!--
+
+  Nomenclator
+  
+-->
+
+<html>
+
+<head>
+
+<style>
+
+  body
+  {
+    background-color: black;
+    color: #ff00b0;
+  }
+  
+  h1
+  {
+    font-family: sans-serif;
+    font-size: 10em;
+    padding-top: 60px;
+    padding-left: 30px;
+  }
+
+</style>
+
+<script>
+
+  // sometimes pick adjective as first word
+  var adjectives = [
+    "black",
+    "hard",
+    "tense",
+    "atlantic",
+    "pacific",
+    "sargasso",
+    "military",
+    "financial",
+    "industrial",
+    "malcontent",
+    "scientific",
+    "escapist",
+    "acid",
+    "lubricating",
+    "budding",
+    "sonic",
+    "repeat",
+    "distant",
+    "mute",
+    "academic",
+    "tactic",
+    "general",
+    "gentle",
+    "fading",
+    "dystopian",
+    "slow",
+    "warsaw"
+  ]
+  
+  // sometimes pick noun as first word
+  // always pick noun as second word
+  var nouns = [
+    "pact",
+    "politics",
+    "stronghold",
+    "ghost",
+    "alliance",
+    "delta",
+    "computer",
+    "channel",
+    "wave",
+    "oracle",
+    "park",
+    "rodent",
+    "mind",
+    "spanner",
+    "synthesizer",
+    "oracle",
+    "destiny",
+    "data",
+    "atom",
+    "report",
+    "sector",
+    "complex",
+    "inference",
+    "custodian",
+    "services",
+    "science",
+    "geography",
+    "scholar",
+    "principle",
+    "action",
+    "house",
+    "pilot",
+    "cenotaph",
+    "technocrat",
+    "dictator",
+    "distance",
+    "future",
+    "history",
+    "academic",
+    "object",
+    "observation",
+    "theory",
+    "practice",
+    "strategy",
+    "interest",
+    "cask",
+    "sway",
+    "fabric",
+    "splendour",
+    "stories",
+    "dystopia",
+    "parallel",
+    "flux",
+    "noun",
+    "linguistics"
+  ]
+  
+  var endWords =
+  [
+    "astray",
+    "ghostly",
+    "darkly",
+    "politic",
+    "adrift",
+    "apart"
+  ]
+
+  function rndInt(limit)
+  {
+    return Math.floor(Math.random() * limit)
+  }
+
+  function getName()
+  {
+    var rangeAdjNoun = 0.3
+    var rangeNounNoun = 0.6
+    var rangeAdjNounNoun = 0.8
+    var rangeAdjNounEnd = 0.9
+    var rangeNounEnd = 1.0
+
+    var dice = Math.random()
+
+    if (dice < rangeAdjNoun)
+    {
+      var a = rndInt(adjectives.length)
+      var n = rndInt(nouns.length)
+      return adjectives[a] + " " + nouns[n]
+    }
+    else if (dice < rangeNounNoun)
+    {
+      var n1 = rndInt(nouns.length)
+      var n2 = rndInt(nouns.length)
+      return nouns[n1] + " " + nouns[n2]
+    }
+    else if (dice < rangeAdjNounNoun)
+    {
+      var a = rndInt(adjectives.length)
+      var n1 = rndInt(nouns.length)
+      var n2 = rndInt(nouns.length)
+      return adjectives[a] + " " + nouns[n1] + " " + nouns[n2]
+    }
+    else if (dice < rangeAdjNounEnd)
+    {
+      var a = rndInt(adjectives.length)
+      var n = rndInt(nouns.length)
+      var e = rndInt(endWords.length)
+      return adjectives[a] + " " + nouns[n] + " " + endWords[e]
+    }
+    else if (dice <= rangeNounEnd)
+    {
+      var n = rndInt(nouns.length)
+      var e = rndInt(endWords.length)
+      return nouns[n] + " " + endWords[e]
+    }
+  }
+  
+</script>
+
+</head>
+
+<body>
+
+<h1><script>document.write(getName())</script></h1>
+
+</body>
+
+</html>
